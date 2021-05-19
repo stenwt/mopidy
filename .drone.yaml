@@ -1,0 +1,25 @@
+---
+kind: pipeline
+type: kubernetes
+name: build-mopidy
+
+trigger:
+  event:
+    - push
+
+metadata:
+  namespace: drone
+
+steps:
+- name: kaniko
+  image: banzaicloud/drone-kaniko
+  settings:
+    registry: registry.home.sud0.com
+    repo: mopidy
+    tags: latest
+    dockerfile: containers/mopidy/Dockerfile
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+
