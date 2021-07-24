@@ -13,7 +13,6 @@ steps:
     registry: registry.home.sud0.com
     repo: mopidy
     tags: latest
-    dockerfile: containers/mopidy/Dockerfile
     username:
       from_secret: docker_username
     password:
